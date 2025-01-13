@@ -1,0 +1,324 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  font-size: 62.5%;
+  --primary-color: #ca3884;
+  --hover-btn-color: #a52c6b;
+  --removal-color: #c93847;
+  --text-color: #080b12;
+  --background-color: #f4f5fb;
+  --border-primary: #d1d5db;
+  --border-hover: #b9c2d0;
+  --placeholder-color: #9ca3af;
+  --content-secondary: #374151;
+}
+
+body {
+  font-family: "Inter", serif;
+  font-size: 1.6rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--background-color);
+  max-width: 39rem;
+  max-height: 84.4rem;
+  padding: 8rem 3.2rem 17rem;
+}
+
+header {
+  display: none;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+#tittleBtn {
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  font-weight: 500;
+
+  color: var(--primary-color);
+  border: none;
+  background-color: transparent;
+
+  width: 5.7rem;
+  cursor: pointer;
+
+  outline: none;
+}
+
+main h1 {
+  font-size: 2.4rem;
+  line-height: 3.2rem;
+  font-weight: bold;
+
+  color: var(--text-color);
+}
+
+#listContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+#listContainer input {
+  font-size: 1.6rem;
+  padding: 1.1rem 1.8rem;
+  margin-top: 4.4rem;
+
+  border-radius: 1.2rem;
+  border: 0.1rem solid var(--border-primary);
+  color: var(--content-secondary);
+}
+
+#listContainer input:hover {
+  border: 0.1rem solid var(--border-hover);
+}
+
+#listContainer input:focus {
+  outline: none;
+  border: 0.2rem solid var(--primary-color);
+}
+
+#listContainer input:focus::placeholder {
+  color: var(--text-color);
+}
+
+#addItem {
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: center;
+
+  padding: 1.2rem 10.7rem;
+  background-color: var(--primary-color);
+  color: white;
+
+  border-radius: 1.2rem;
+  border: 0.1rem solid var(--border-primary);
+
+  cursor: pointer;
+}
+
+#addItem:hover {
+  background-color: var(--hover-btn-color);
+}
+
+#addItem:focus {
+  outline: none;
+}
+
+/* Styling of newly added items */
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 4rem;
+}
+
+.input-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem;
+
+  background-color: white;
+  border-radius: 1.2rem;
+}
+
+.checkbox {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 0.6rem;
+  appearance: none;
+  background-color: white;
+  border: 0.1rem solid var(--border-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox:checked {
+  background-color: var(--primary-color);
+  border: 0.1rem solid var(--primary-color);
+  position: relative;
+}
+
+/* .label-text > input[type="checkbox"]:checked + span {
+  text-decoration: line-through;
+} */
+
+.checkbox:checked + .label-text {
+  text-decoration: line-through;
+}
+
+.checkbox:checked::after {
+  content: "✔";
+  color: white;
+  font-size: 1rem;
+  position: absolute;
+}
+
+.checkbox:hover {
+  border: 0.1rem solid var(--hover-btn-color);
+}
+
+.label-text {
+  font-size: 1.6rem;
+  line-height: 2rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.action-button {
+  background-color: white;
+  border: none;
+  width: 3.2rem;
+  height: 3.2rem;
+
+  cursor: pointer;
+}
+
+/* Aqui fica a estilização do aviso que o item foi removido, este ficara com class hide até que o usuário delete um item */
+
+#itemRemoved {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1.2rem;
+  margin-top: 3.6rem;
+
+  background-color: var(--removal-color);
+  border-radius: 1.2rem;
+
+  -webkit-animation: slide-in-blurred-bottom 0.9s cubic-bezier(0.23, 1, 0.32, 1)
+    both;
+  animation: slide-in-blurred-bottom 0.9s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+
+@-webkit-keyframes slide-in-blurred-bottom {
+  0% {
+    -webkit-transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
+    transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    -webkit-filter: blur(40px);
+    filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0) scaleY(1) scaleX(1);
+    transform: translateY(0) scaleY(1) scaleX(1);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+@keyframes slide-in-blurred-bottom {
+  0% {
+    -webkit-transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
+    transform: translateY(1000px) scaleY(2.5) scaleX(0.2);
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    -webkit-filter: blur(40px);
+    filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0) scaleY(1) scaleX(1);
+    transform: translateY(0) scaleY(1) scaleX(1);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+.danger-text {
+  font-size: 1.6rem;
+  line-height: 2rem;
+  font-weight: 600;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.danger-text img {
+  width: 1.86rem;
+  height: 1.86rem;
+}
+
+#itemRemoved button {
+  background-color: var(--removal-color);
+  color: white;
+  border: none;
+
+  cursor: pointer;
+}
+
+#itemRemoved button img {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+}
+
+#itemRemoved.hidden {
+  display: none;
+}
+
+@media (min-width: 580px) {
+  body {
+    max-width: 62.7rem;
+  }
+
+  #tittleBtn {
+    margin-top: 6.2rem;
+  }
+
+  #headerImg {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: fixed;
+    top: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+  }
+
+  #listContainer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin-top: 4.4rem;
+  }
+
+  #listContainer input {
+    width: 70%;
+    margin-top: 0;
+  }
+
+  #addItem {
+    width: 30%;
+    font-size: 1.6rem;
+    text-wrap: nowrap;
+    text-align: center;
+    height: 4.4rem;
+  }
+}
